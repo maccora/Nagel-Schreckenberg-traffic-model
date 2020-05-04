@@ -1,0 +1,42 @@
+# Author: James Maccora
+# Date: 05/03/2020
+# I made this program out of boredom and genuine curiosity during quarantine
+# This program will attempt to implement the first step of the Nagel-Schreckenberg model for traffic
+# The max velocity in this situation is +45 mph
+# Step 1 states that if the velocity of any car is less than the max velocity, you increment its velocity by one
+
+from typing import Dict
+
+velocityMax = 45
+
+print("This program will ask you for the number of vehicles on the road and their individual velocities");
+userVehicleInput = input("Enter the number of vehicles on the road. (Integer) ");
+
+print(userVehicleInput + " is the number of vehicles that will factor into this model");
+
+numOfVehicles = int(userVehicleInput);
+
+vehiclesAndTheirIndividualVelocities = dict();
+
+for x in range(numOfVehicles):
+    userVelocityInput = input("Please enter the velocity of car " + str(x + 1) + ": ")
+    dict1: Dict[int, str] = {x : userVelocityInput}
+    vehiclesAndTheirIndividualVelocities.update(dict1)
+
+print("Cars and their individual velocities before step one");
+
+for x in range(numOfVehicles):
+    print("The velocity of car " + str(x+1) + " is +" + vehiclesAndTheirIndividualVelocities.get(x) + " mph")
+
+for x in range(numOfVehicles):
+    if(int(vehiclesAndTheirIndividualVelocities.get(x)) < velocityMax):
+        vel = int(vehiclesAndTheirIndividualVelocities.get(x));
+        newVel = vel + 1;
+        vehiclesAndTheirIndividualVelocities[x] =  str(newVel)
+
+print("Cars and their individual velocities after step one");
+
+for x in range(numOfVehicles):
+    print("The velocity of car " + str(x+1) + " is +" + vehiclesAndTheirIndividualVelocities.get(x) + " mph")
+
+print("Thank you for trying out my program. Hope you're doing well!");
